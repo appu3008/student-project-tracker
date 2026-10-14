@@ -1,61 +1,51 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Student Project Tracker</title>
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body>
-    <main class="container">
-      <header>
-        <h1>Student Project Tracker</h1>
-      </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Project Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Student Project Tracker</h1>
+    <p>Track our electronics project ideas.</p>
+  </header>
 
-      <section class="panel">
-        <form id="project-form">
-          <input type="hidden" id="project-id" />
+  <main>
+    <section aria-labelledby="form-title">
+      <h2 id="form-title">Add a Project</h2>
 
-          <label>
-            Project title
-            <input id="project-title" name="title" type="text" placeholder="e.g. Portfolio redesign" required />
-          </label>
-
-          <label>
-            Status
-            <select id="project-status" name="status">
-              <option value="planned">Planned</option>
-              <option value="in-progress">In progress</option>
-              <option value="completed">Completed</option>
-            </select>
-          </label>
-
-          <label>
-            Due date
-            <input id="project-date" name="dueDate" type="date" />
-          </label>
-
-          <label>
-            Notes
-            <textarea id="project-description" name="description" rows="4" placeholder="Add a short summary of the project"></textarea>
-          </label>
-
-          <div class="actions">
-            <button type="submit" id="save-button">Save project</button>
-            <button type="button" id="cancel-button" class="secondary hidden">Cancel</button>
-          </div>
-          <p id="form-error" class="error" aria-live="polite"></p>
-        </form>
-      </section>
-
-      <section class="panel">
-        <div class="list-header">
-          <h2>Projects</h2>
+      <form id="project-form">
+        <div>
+          <label for="name">Project Name</label>
+          <input type="text" id="name" name="name"
+                 maxlength="80" required>
         </div>
-        <ul id="project-list" class="project-list"></ul>
-      </section>
-    </main>
 
-    <script src="/script.js"></script>
-  </body>
+        <div>
+          <label for="status">Project Status</label>
+          <select id="status" name="status">
+            <option value="Planned">Planned</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </div>
+
+        <button id="save-button" type="submit">Save Project</button>
+        <button id="cancel-button" type="button" hidden>Cancel</button>
+      </form>
+
+      <p id="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section aria-labelledby="list-title">
+      <h2 id="list-title">Your Projects</h2>
+      <p id="empty-state">No projects have been added yet.</p>
+      <ul id="project-list"></ul>
+    </section>
+  </main>
+</body>
 </html>
