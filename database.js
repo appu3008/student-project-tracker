@@ -9,6 +9,8 @@ fs.mkdirSync(dbDirectory, { recursive: true });
 
 const db = new DatabaseSync(dbPath);
 
+initDatabase();
+
 function mapProject(row) {
   if (!row) return null;
 
