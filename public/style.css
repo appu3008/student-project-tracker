@@ -1,14 +1,16 @@
+
+/* ===== GitHub Universe-Inspired Student Project Tracker ===== */
+
 :root {
-  color-scheme: light;
-  --bg: #f4f7fb;
-  --panel: #ffffff;
-  --border: #d9e3f0;
-  --primary: #2d6cdf;
-  --primary-strong: #1e4ea3;
-  --text: #1e293b;
-  --muted: #536175;
-  --danger: #b42318;
-  --shadow: rgba(15, 23, 42, 0.08);
+  color-scheme: dark;
+  --background: #09090b;
+  --surface: #131318;
+  --surface-raised: #1b1b23;
+  --text: #faf9ff;
+  --muted: #b6b3c5;
+  --border: #34313f;
+  --purple: #a855f7;
+  --pink: #f472b6;
 }
 
 * {
@@ -17,184 +19,289 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
+  min-height: 100vh;
+  padding: 48px 24px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
   color: var(--text);
+  background:
+    radial-gradient(
+      ellipse at 12% 0%,
+      rgba(126, 34, 206, 0.23),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 90% 12%,
+      rgba(219, 39, 119, 0.13),
+      transparent 32%
+    ),
+    var(--background);
 }
 
-.container {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 32px 20px 48px;
+/* ===== Page Header ===== */
+
+header,
+main {
+  width: 100%;
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+header {
+  margin-bottom: 42px;
+  padding: 28px 0 34px;
 }
 
 header h1 {
-  margin-bottom: 24px;
+  max-width: 850px;
+  margin: 0 0 20px;
+  font-size: clamp(2.8rem, 7vw, 5.6rem);
+  font-weight: 850;
+  line-height: 0.99;
+  letter-spacing: -0.065em;
+  color: var(--text);
+  background: linear-gradient(
+    105deg,
+    #ffffff 10%,
+    #d8b4fe 48%,
+    #f9a8d4 82%,
+    #c4b5fd 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.panel {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 10px 25px var(--shadow);
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-#project-form {
-  display: grid;
-  gap: 16px;
-}
-
-label {
-  display: grid;
-  gap: 8px;
+header p {
+  max-width: 650px;
+  margin: 0;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
   color: var(--muted);
-  font-weight: 600;
 }
 
-input,
-select,
-textarea,
-button {
-  font: inherit;
-}
+/* ===== Sections ===== */
 
-input,
-select,
-textarea {
-  width: 100%;
+section {
+  margin-bottom: 26px;
+  padding: 32px;
+  background: rgba(19, 19, 24, 0.94);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 12px;
-  background: white;
+  border-radius: 16px;
+}
+
+h2 {
+  margin: 0 0 24px;
+  font-size: clamp(1.45rem, 3vw, 1.9rem);
+  font-weight: 760;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
   color: var(--text);
 }
 
-.actions {
-  display: flex;
-  gap: 12px;
-  align-items: center;
+/* ===== Form Layout ===== */
+
+#project-form > div {
+  margin-bottom: 22px;
 }
+
+#project-form label {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 0.95rem;
+  font-weight: 650;
+  color: #e8e3f3;
+}
+
+#project-form input,
+#project-form select,
+#project-form textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 50px;
+  padding: 12px 15px;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  background: #0c0c11;
+  border: 1px solid #454050;
+  border-radius: 9px;
+}
+
+#project-form select {
+  cursor: pointer;
+}
+
+/* ===== Notes Box Fix ===== */
+
+#project-form textarea {
+  width: 100%;
+  height: 150px;
+  min-height: 150px;
+  padding: 14px 16px;
+  margin-top: 4px;
+  resize: vertical;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+#project-form textarea::placeholder {
+  color: #9691a5;
+  opacity: 1;
+}
+
+#project-form input:hover,
+#project-form select:hover,
+#project-form textarea:hover {
+  border-color: #8b7ca5;
+}
+
+#project-form input:focus-visible,
+#project-form select:focus-visible,
+#project-form textarea:focus-visible {
+  outline: 3px solid var(--purple);
+  outline-offset: 3px;
+  border-color: #c084fc;
+}
+
+/* ===== Buttons ===== */
 
 button {
-  border: none;
-  border-radius: 8px;
-  padding: 10px 16px;
+  min-height: 48px;
+  padding: 12px 22px;
+  font-family: inherit;
+  font-size: 1rem;
   font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(
+    110deg,
+    #7c3aed,
+    #a855f7,
+    #c026d3
+  );
+  border: 1px solid transparent;
+  border-radius: 9px;
   cursor: pointer;
-  transition: filter 0.2s ease;
-}
-
-button:hover {
-  filter: brightness(0.98);
 }
 
 #save-button {
-  background: var(--primary);
-  color: white;
+  background: linear-gradient(
+    110deg,
+    #7c3aed,
+    #a855f7,
+    #db2777
+  );
 }
 
-.secondary {
-  background: #e2e8f0;
-  color: var(--text);
+button:hover {
+  filter: brightness(1.12);
 }
 
-.hidden {
-  display: none;
+button:active {
+  filter: brightness(0.92);
 }
 
-.error {
-  min-height: 1.2em;
-  color: var(--danger);
+button:focus-visible {
+  outline: 3px solid #f0abfc;
+  outline-offset: 4px;
+}
+
+#cancel-button {
+  margin-left: 10px;
+  color: #f0eafa;
+  background: var(--surface-raised);
+  border-color: #51495f;
+}
+
+#cancel-button:hover {
+  background: #292433;
+}
+
+/* ===== Status Message ===== */
+
+#message {
+  margin: 18px 0 0;
+  color: #d8b4fe;
+}
+
+/* ===== Project List ===== */
+
+#empty-state {
   margin: 0;
+  padding: 20px;
+  color: var(--muted);
+  background: #0d0d13;
+  border: 1px dashed #494154;
+  border-radius: 10px;
+  overflow-wrap: anywhere;
 }
 
-.list-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+#project-list {
+  margin: 18px 0 0;
+  padding-left: 24px;
+}
+
+#project-list li {
   margin-bottom: 12px;
-}
-
-.project-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 12px;
-}
-
-.project-item {
-  display: grid;
-  gap: 10px;
-  background: #f8fafc;
+  padding: 16px;
+  color: var(--text);
+  background: var(--surface-raised);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 14px 16px;
+  overflow-wrap: anywhere;
 }
 
-.project-item header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
+/* Keep hidden controls hidden */
+
+[hidden] {
+  display: none !important;
 }
 
-.project-title {
-  margin: 0;
-  font-size: 1.1rem;
-}
+/* ===== Responsive Design ===== */
 
-.project-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  color: var(--muted);
-  font-size: 0.92rem;
-}
+@media (max-width: 560px) {
+  body {
+    padding: 22px 14px;
+  }
 
-.badge {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 999px;
-  background: #dbeafe;
-  color: var(--primary-strong);
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: capitalize;
-}
+  header {
+    margin-bottom: 24px;
+    padding: 16px 0 22px;
+  }
 
-.project-item p {
-  margin: 0;
-  color: var(--text);
-}
+  header h1 {
+    font-size: clamp(2.5rem, 12vw, 3.8rem);
+  }
 
-.actions-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+  header p {
+    font-size: 1rem;
+  }
 
-.actions-row button {
-  padding: 8px 12px;
-}
+  section {
+    margin-bottom: 18px;
+    padding: 21px 17px;
+    border-radius: 12px;
+  }
 
-.edit-button {
-  background: #dbeafe;
-  color: var(--primary-strong);
-}
+  h2 {
+    margin-bottom: 20px;
+  }
 
-.delete-button {
-  background: #fee2e2;
-  color: var(--danger);
-}
+  #project-form textarea {
+    height: 130px;
+    min-height: 130px;
+  }
 
-.empty-state {
-  border: 1px dashed var(--border);
-  border-radius: 10px;
-  padding: 16px;
-  color: var(--muted);
-  text-align: center;
-  background: #f8fafc;
+  #save-button,
+  #cancel-button {
+    width: 100%;
+  }
+
+  #cancel-button {
+    margin: 10px 0 0;
+  }
 }
