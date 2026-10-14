@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Project Tracker</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Student Project Tracker</h1>
+      </header>
+
+      <section class="panel">
+        <form id="project-form">
+          <input type="hidden" id="project-id" />
+
+          <label>
+            Project title
+            <input id="project-title" name="title" type="text" placeholder="e.g. Portfolio redesign" required />
+          </label>
+
+          <label>
+            Status
+            <select id="project-status" name="status">
+              <option value="planned">Planned</option>
+              <option value="in-progress">In progress</option>
+              <option value="completed">Completed</option>
+            </select>
+          </label>
+
+          <label>
+            Due date
+            <input id="project-date" name="dueDate" type="date" />
+          </label>
+
+          <label>
+            Notes
+            <textarea id="project-description" name="description" rows="4" placeholder="Add a short summary of the project"></textarea>
+          </label>
+
+          <div class="actions">
+            <button type="submit" id="save-button">Save project</button>
+            <button type="button" id="cancel-button" class="secondary hidden">Cancel</button>
+          </div>
+          <p id="form-error" class="error" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="list-header">
+          <h2>Projects</h2>
+        </div>
+        <ul id="project-list" class="project-list"></ul>
+      </section>
+    </main>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
